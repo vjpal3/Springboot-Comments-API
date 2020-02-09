@@ -12,7 +12,6 @@ public class SpamCheckerApp {
 
 		if (args.length == 2) {
 			spamWords = Files.readAllLines(Paths.get(args[1]));
-
 		}
 		SimpleSpamDetector spamDetector = new SimpleSpamDetector(spamWords);
 		System.out.println(spamDetector.containsSpam(args[0]));
