@@ -1,13 +1,20 @@
 package com.mycompany.commentsapi.spamdetection;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service
 public class SimpleSpamDetector implements SpamDetector {
 	private List<String> spamWords = new ArrayList<String>();
 
-	public SimpleSpamDetector(List<String> spamWords) {
-		this.spamWords = spamWords;
+	public SimpleSpamDetector(@Value("${sbb.spamwords.filename}") String filename) throws IOException {
+		spamWords = Files.readAllLines(Paths.get(filename));
 	}
 
 	public boolean containsSpam(String value) {

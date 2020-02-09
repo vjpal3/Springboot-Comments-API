@@ -2,11 +2,15 @@ package com.mycompany.commentsapi.spamdetection;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
 public class ControlFlow {
 
 	private SpamDetector spamDetector = null;
 
-	public ControlFlow(SpamDetector spamDetector) {
+	public ControlFlow(@Qualifier("simpleSpamDetector") SpamDetector spamDetector) {
 		super();
 		this.spamDetector = spamDetector;
 	}
