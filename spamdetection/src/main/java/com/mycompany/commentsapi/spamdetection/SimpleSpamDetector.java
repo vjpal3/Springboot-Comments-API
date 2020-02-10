@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SimpleSpamDetector implements SpamDetector {
 	private List<String> spamWords = new ArrayList<String>();
-
+		
 	public SimpleSpamDetector(@Value("${sbb.spamwords.filename}") String filename) throws IOException {
 		spamWords = Files.readAllLines(Paths.get(filename));
 	}
